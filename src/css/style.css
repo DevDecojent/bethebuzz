@@ -5485,6 +5485,22 @@ body[class*=not-touch-screen] [data-slice-variation=violet] .styles_block__IND_y
   }
 }
 
+.client-heading-wrap {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 764.37px;
+}
+@media screen and (max-width: 600px) {
+  .client-heading-wrap {
+    font-size: 130px;
+  }
+}
+@media screen and (max-width: 380px) {
+  .client-heading-wrap {
+    font-size: 100px;
+  }
+}
+
 html {
   height: 100%;
 }

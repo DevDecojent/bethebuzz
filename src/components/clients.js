@@ -65,7 +65,7 @@ export default function Clients() {
 					</h4>
 					<div style={{ width: '100%' }}>
 						<div 
-							className='heading-wrap'
+							className='client-heading-wrap'
 						>
 							<h2 className="headline headline-outline animate-headline" ref={headlineRef} style={{
 								opacity: '1',

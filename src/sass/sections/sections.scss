@@ -5825,3 +5825,15 @@ body[class*=not-touch-screen] [data-slice-variation=violet] .styles_block__IND_y
         font-size: 100px;
     }
 }
+
+.client-heading-wrap {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 764.37px;
+    @media screen and  (max-width: 600px) {
+        font-size: 130px;
+    }
+    @media screen and  (max-width: 380px) {
+        font-size: 100px;
+    }
+}
