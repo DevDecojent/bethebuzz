@@ -75,7 +75,6 @@ export default function Footer() {
 										rotate: 'none',
 										scale: 'none',
 										width: isHovered ? 'auto' : ' 0px',
-										transition: 'width 0.4s ease', 
 										transform: isHovered ? 'translate(0em, 0px)' : 'translate(-0.4em, 0px)',
 										transition: 'transform 0.4s ease-in-out', 
 									}}
@@ -101,7 +100,6 @@ export default function Footer() {
 								<div className="styles_button__labelContainer__P9ZGZ border-radius"
 									style={{
 										width: isHovered ? '15.8542em' : ' 409.719px',
-										transition: 'width 0.4s ease', 
 										transform: isHovered ? 'translate(6.15em, 0px)' : 'translate(0px, 0px)',
 										transition: 'transform 0.4s ease-in-out', 
 									}}
