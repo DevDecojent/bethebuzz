@@ -90,7 +90,7 @@ export default function Clients() {
 								style={{ zIndex: 1, transform: 'translate(-100%, 0%)' }}
 							>
 								<img
-									alt=""
+									alt="Sarah Craft"
 									loading="lazy"
 									width="196"
 									height="196"
@@ -105,13 +105,13 @@ export default function Clients() {
 								style={{ zIndex: 2, transform: 'translate(0px, 0px)' }}
 							>
 								<img
-									alt=""
+									alt="Sara Trammell"
 									loading="lazy"
 									width="196"
 									height="196"
 									decoding="async"
 									srcSet="https://images.prismic.io/bethebuzz-cms/65ccdf619be9a5b998b5d17c_SaraTrammell.jpg?auto=format%2Ccompress&fit=max&w=256 1x, https://images.prismic.io/bethebuzz-cms/65ccdf619be9a5b998b5d17c_SaraTrammell.jpg?auto=format%2Ccompress&fit=max&w=640 2x"
-									src="https://images.prismic.io/bethebuzz-cms/65ccdf619be9a5b998b5d17c_SaraTrammell.jpg?auto=format%2Ccompress&fit=max&w=640"
+									src="https://images.prismic.io/bethebuzz-cms/65ccdf619be9a5b998b5d17c_SaraTrammell.jpg?auto=format%2Ccompress&fit=max&w=640" 
 									style={{ color: 'transparent', transform: 'translate(0px, 0px)' }}
 								/>
 							</div>
@@ -120,7 +120,7 @@ export default function Clients() {
 								style={{ zIndex: 1, transform: 'translate(-100%, 0%)' }}
 							>
 								<img
-									alt="Sarah Craft Image"
+									alt="Sarah Craft"
 									loading="lazy"
 									width="196"
 									height="196"
@@ -141,7 +141,10 @@ export default function Clients() {
 					</div>
 					<div className="slideshow_slideshow-content__Drjo_">
 						<header className="slideshow_slideshow-contentHeader__2NgXs">
-							<button aria-label title className="styles_button__CR5vR styles_prev__2AqhC border-radius slideshow_slideshow-contentButton__pwYkf">
+						<button
+						aria-label="Previous Slide" 
+						className="styles_button__CR5vR styles_prev__2AqhC border-radius slideshow_slideshow-contentButton__pwYkf"
+						>
 								<div
 									className="styles_button__svgContainer__ppZ1p border-radius"
 									style={{ transform: 'translate(0%, 0px)' }}
@@ -184,7 +187,7 @@ export default function Clients() {
 									}}
 								>
 									<img
-										alt=""
+										alt="Sarah Craft"
 										loading="lazy"
 										width={196}
 										height={196}
@@ -206,7 +209,7 @@ export default function Clients() {
 									}}
 								>
 									<img
-										alt=""
+										alt="Sarah Craft"
 										loading="lazy"
 										width={196}
 										height={196}
@@ -228,7 +231,7 @@ export default function Clients() {
 									}}
 								>
 									<img
-										alt="Sarah Craft Image"
+										alt="Sarah Craft"
 										loading="lazy"
 										width={196}
 										height={196}
@@ -250,7 +253,7 @@ export default function Clients() {
 									}}
 								/>
 							</div>
-							<button aria-label title className="styles_button__CR5vR styles_next__qm3f_ border-radius slideshow_slideshow-contentButton__pwYkf">
+							<button aria-label="next Slide" title className="styles_button__CR5vR styles_next__qm3f_ border-radius slideshow_slideshow-contentButton__pwYkf">
 								<div
 									className="styles_button__svgContainer__ppZ1p border-radius"
 									style={{
@@ -440,7 +443,7 @@ export default function Clients() {
 								}}
 							>
 								<img
-									alt=""
+									alt="Sarah Craft"
 									loading="lazy"
 									width="196"
 									height="196"
@@ -462,7 +465,7 @@ export default function Clients() {
 								}}
 							>
 								<img
-									alt=""
+									alt="Sarah Craft"
 									loading="lazy"
 									width="196"
 									height="196"
@@ -484,7 +487,7 @@ export default function Clients() {
 								}}
 							>
 								<img
-									alt="Sarah Craft Image"
+									alt="Sarah Craft"
 									loading="lazy"
 									width="196"
 									height="196"
