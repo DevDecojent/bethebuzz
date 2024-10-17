@@ -1,0 +1,38 @@
+$extra_large: 2100px;
+$xxl: 1550px;
+$xl: 1200px;
+$lg: 991px;
+$md: 767px;
+$sm: 575px;
+
+
+// Color Variables //
+
+:root {
+    --color-white: #fff;
+    --color-black: #000;
+    --color-dark-blue: #010561;
+    --color-violet: #5e29f9;
+    --color-light-grey: #f2f2f7;
+    --color-grey: #e6e6f0;
+    --color-orange: #fe9421;
+    --color-pink: #e60696;
+    --color-red: #f35356;
+    --color-border: var(--color-grey);
+    --text-dark-color: var(--color-black);
+    --font-text-regular: "PPNeueMontreal-Regular", sans-serif;
+    --font-text-book: "PPNeueMontreal-Book", sans-serif;
+    --font-text-medium: "PPNeueMontreal-Medium", sans-serif;
+    --font-text-bold: "PPNeueMontreal-Bold", sans-serif;
+    --font-headline-bold: "Lemon-Bold", sans-serif;
+    --font-editorial-ultralight: "PPEditorialOld-Ultralight", serif;
+    --padding-desktop: 20px;
+    --block-padding: clamp(24px, 4.167vw, 60px);
+    --grid-gap: clamp(10px, 1.389vw, 20px);
+    --border-radius: max(5px, 0.3vw);
+    --header-nav-width: 56vw;
+    --header-bar-height: calc(74px + var(--grid-gap));
+    --testimonial-image-width: clamp(85px, 13.611vw, 250px);
+    --testimonial-clip: min(16.389vw, 290px);
+}
+
