@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -8,6 +8,8 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Clients() {
 	const headlineRef = useRef(null); // Reference to the h2 containing the letters
 	const h4Ref = useRef(null); // Reference specifically for the h4 element
+	const [isPrevHovered, setIsPrevHovered] = useState(false);
+	const [isNextHovered, setIsNextHovered] = useState(false);
 	useEffect(() => {
 		const headingLetters = headlineRef.current.querySelectorAll('div'); // Get all letter divs inside h2
 
@@ -54,17 +56,17 @@ export default function Clients() {
 			<section className="styles_clients__0Fl_N">
 				<header data-header-theme="light" className="styles_header__0xhVU">
 					<h4
-							className="accent accent-40 animate-fadeinup"
-							ref={h4Ref}
-							style={{
-								opacity: '1',
-								transform: 'translate(0px, 0px)',
-							}}
+						className="accent accent-40 animate-fadeinup"
+						ref={h4Ref}
+						style={{
+							opacity: '1',
+							transform: 'translate(0px, 0px)',
+						}}
 					>
 						Hear it from our
 					</h4>
 					<div style={{ width: '100%' }}>
-						<div 
+						<div
 							className='client-heading-wrap'
 						>
 							<h2 className="headline headline-outline animate-headline" ref={headlineRef} style={{
@@ -111,7 +113,7 @@ export default function Clients() {
 									height="196"
 									decoding="async"
 									srcSet="https://images.prismic.io/bethebuzz-cms/65ccdf619be9a5b998b5d17c_SaraTrammell.jpg?auto=format%2Ccompress&fit=max&w=256 1x, https://images.prismic.io/bethebuzz-cms/65ccdf619be9a5b998b5d17c_SaraTrammell.jpg?auto=format%2Ccompress&fit=max&w=640 2x"
-									src="https://images.prismic.io/bethebuzz-cms/65ccdf619be9a5b998b5d17c_SaraTrammell.jpg?auto=format%2Ccompress&fit=max&w=640" 
+									src="https://images.prismic.io/bethebuzz-cms/65ccdf619be9a5b998b5d17c_SaraTrammell.jpg?auto=format%2Ccompress&fit=max&w=640"
 									style={{ color: 'transparent', transform: 'translate(0px, 0px)' }}
 								/>
 							</div>
@@ -141,15 +143,26 @@ export default function Clients() {
 					</div>
 					<div className="slideshow_slideshow-content__Drjo_">
 						<header className="slideshow_slideshow-contentHeader__2NgXs">
-						<button
-						aria-label="Previous Slide" 
-						className="styles_button__CR5vR styles_prev__2AqhC border-radius slideshow_slideshow-contentButton__pwYkf"
-						>
+							<button
+								aria-label="Previous Slide"
+								className="styles_button__CR5vR styles_prev__2AqhC border-radius slideshow_slideshow-contentButton__pwYkf"
+								onMouseEnter={() => setIsPrevHovered(true)}
+								onMouseLeave={() => setIsPrevHovered(false)}
+							>
 								<div
 									className="styles_button__svgContainer__ppZ1p border-radius"
-									style={{ transform: 'translate(0%, 0px)' }}
+									style={{
+										translate: 'none',
+										rotate: 'none',
+										scale: 'none',
+										transform: isPrevHovered ? 'translate(-100%, 0px)' : 'translate(0%, 0px)',
+										transition: 'transform 0.5s ease',
+									}}
 								>
-									<svg viewBox="0 0 12 10" fill="none" style={{ transform: 'translate(0px, 0px)' }}>
+									<svg viewBox="0 0 12 10" fill="none" style={{
+										transform: isPrevHovered ? 'translate(2em, 0px) scale(0, 0)' : 'translate(0px, 0px)',
+										transition: 'transform 0.5s ease',
+									}}>
 										<path
 											d="M4.9 9L1 5m0 0l3.9-4M1 5h9.6"
 											stroke="#010561"
@@ -161,12 +174,21 @@ export default function Clients() {
 								</div>
 								<div
 									className="styles_button__svgContainer__ppZ1p border-radius"
-									style={{ transform: 'translate(100%, 0px)' }}
+									style={{
+										translate: 'none',
+										rotate: 'none',
+										scale: 'none',
+										transform: isPrevHovered ? 'translate(0%, 0px)' : 'translate(100%, 0px)',
+										transition: 'transform 0.5s ease',
+									}}
 								>
 									<svg
 										viewBox="0 0 12 10"
 										fill="none"
-										style={{ transform: 'translate(2em, 0px) scale(0, 0)' }}
+										style={{
+											transform: isPrevHovered ? 'translate(0px, 0px)' : 'translate(2em, 0px) scale(0, 0)',
+											transition: 'transform 0.5s ease',
+										}}
 									>
 										<path
 											d="M4.9 9L1 5m0 0l3.9-4M1 5h9.6"
@@ -253,18 +275,26 @@ export default function Clients() {
 									}}
 								/>
 							</div>
-							<button aria-label="next Slide" title className="styles_button__CR5vR styles_next__qm3f_ border-radius slideshow_slideshow-contentButton__pwYkf">
+							<button aria-label="next Slide" title className="styles_button__CR5vR styles_next__qm3f_ border-radius slideshow_slideshow-contentButton__pwYkf"
+								onMouseEnter={() => setIsNextHovered(true)}
+								onMouseLeave={() => setIsNextHovered(false)}
+							>
 								<div
 									className="styles_button__svgContainer__ppZ1p border-radius"
 									style={{
-										transform: 'translate(0%, 0px)',
+										translate: 'none',
+										rotate: 'none',
+										scale: 'none',
+										transform: isNextHovered ? 'translate(100%, 0px)' : 'translate(0%, 0px)',
+										transition: 'transform 0.5s ease',
 									}}
 								>
 									<svg
 										viewBox="0 0 12 10"
 										fill="none"
 										style={{
-											transform: 'translate(0px, 0px)',
+											transform: isNextHovered ? 'translate(-2em, 0px) scale(0, 0)' : 'translate(0px, 0px)',
+											transition: 'transform 0.5s ease',
 										}}
 									>
 										<path
@@ -279,14 +309,19 @@ export default function Clients() {
 								<div
 									className="styles_button__svgContainer__ppZ1p border-radius"
 									style={{
-										transform: 'translate(-100%, 0px)',
+										translate: 'none',
+										rotate: 'none',
+										scale: 'none',
+										transform: isNextHovered ? 'translate(0%, 0px)' : 'translate(-100%, 0px)',
+										transition: 'transform 0.5s ease',
 									}}
 								>
 									<svg
 										viewBox="0 0 12 10"
 										fill="none"
 										style={{
-											transform: 'translate(-2em, 0px) scale(0, 0)',
+											transform: isNextHovered ? 'translate(0px, 0px)' : 'translate(-2em, 0px) scale(0, 0)',
+											transition: 'transform 0.5s ease',
 										}}
 									>
 										<path

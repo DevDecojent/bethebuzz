@@ -75,7 +75,7 @@ export default function Footer() {
 										rotate: 'none',
 										scale: 'none',
 										width: isHovered ? 'auto' : ' 0px',
-										transform: isHovered ? 'translate(0em, 0px)' : 'translate(-0.4em, 0px)',
+										transform: isHovered ? 'translate(0em, 0px)' : 'translate(-6em, 0px)',
 										transition: 'transform 0.4s ease-in-out', 
 									}}
 								>
@@ -85,8 +85,7 @@ export default function Footer() {
 										fill="none"
 										style={{ 
 											transform: isHovered ? 'translate(0px, 0px)' : 'scale(0, 0)',
-										transition: 'transform 0.4s ease-in-out', 
-
+											transition: 'transform 0.4s ease-in-out', 
 										}}
 									>
 										<path
