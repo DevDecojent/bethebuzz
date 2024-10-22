@@ -75,17 +75,17 @@ export default function Slider() {
 			gsap.fromTo(
 				titleSpans,
 				{ y: 50, opacity: 0 },
-				{ y: 0, opacity: 1, duration: 0.3, stagger: 0.03, ease: 'power3.out' }
+				{ y: 0, opacity: 1, duration: 0.3, stagger: 0.02, ease: 'power3.out' }
 			);
 			gsap.fromTo(
 				numberSpans,
 				{ y: 50, opacity: 0 },
-				{ y: 0, opacity: 1, duration: 0.3, stagger: 0.1, ease: 'power3.out' }
+				{ y: 0, opacity: 1, duration: 0.3, stagger: 0.02, ease: 'power3.out' }
 			);
 			gsap.fromTo(
 				numberTexts,
 				{ y: 50, opacity: 0 },
-				{ y: 0, opacity: 1, duration: 0.3, stagger: 0.1, ease: 'power3.out' }
+				{ y: 0, opacity: 1, duration: 0.3, stagger: 0.02, ease: 'power3.out' }
 			);
 		}
 	}, [activeIndex]);
@@ -264,7 +264,8 @@ export default function Slider() {
 													style={{
 														position: 'relative',
 														display: 'inline-block',
-														color: 'rgb(1, 5, 97)', // Ensure the title is visible
+														padding: '0 5px',
+														color: 'rgb(1, 5, 97)',
 													}}
 												>
 													{title}

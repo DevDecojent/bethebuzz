@@ -10,6 +10,32 @@ export default function Clients() {
 	const h4Ref = useRef(null); // Reference specifically for the h4 element
 	const [isPrevHovered, setIsPrevHovered] = useState(false);
 	const [isNextHovered, setIsNextHovered] = useState(false);
+
+	const testimonials = [
+		{
+			id: 1,
+			name: "Meredith Watkins",
+			subtitle: "CEO & Managing Partner",
+			text: "“When working with BetheBuzz, I never felt like a client. Her ability to read between the lines of any business plan to determine the most cost-effective, efficient way to move forward is uncanny. Not only that, she goes above and beyond – learning about the team dynamics to ensure everyone is working cohesively toward a common goal. I’ve never felt so empowered to take on the challenges of growing a new business than I have when working with Miad.”",
+		},
+		{
+			id: 2,
+			name: "Sara Trammell",
+			subtitle: "CMO, XLA",
+			text: "“They helped us to achieve a strong online presence for our product.”",
+		},
+		{
+			id: 3,
+			name: "Sara Craft",
+			subtitle: "VP, Acme Inc.",
+			text: "“Their professional approach and creative solutions were very impressive.”",
+		},
+	];
+
+	const [activeIndex, setActiveIndex] = useState(0);
+
+
+
 	useEffect(() => {
 		const headingLetters = headlineRef.current.querySelectorAll('div'); // Get all letter divs inside h2
 
@@ -51,6 +77,80 @@ export default function Clients() {
 			}
 		);
 	}, []);
+
+	useEffect(() => {
+		const articles = document.querySelectorAll('.slideshow_slideshow-article__ztzrb');
+
+		// Select active article
+		articles.forEach((article, index) => {
+			if (index === activeIndex) {
+				// Animate the name
+				const nameElement = article.querySelector('.slideshow_slideshow-articleTitle__OckzX div');
+				gsap.fromTo(
+					nameElement,
+					{ y: 50, opacity: 0 }, // Start position and opacity
+					{
+						y: 0,         // End at original position
+						opacity: 1,   // Fully visible
+						duration: 1,  // 1 second duration
+						ease: 'power3.out', // Smooth easing
+					}
+				);
+
+				// Animate the subtitle
+				const subtitleElement = article.querySelector('.slideshow_slideshow-articleSubtitle__WTbzq div');
+				gsap.fromTo(
+					subtitleElement,
+					{ y: 50, opacity: 0 }, // Start position and opacity
+					{
+						y: 0,         // End at original position
+						opacity: 1,   // Fully visible
+						duration: 1,  // 1 second duration
+						delay: 0.2,   // Delay the subtitle animation a bit
+						ease: 'power3.out', // Smooth easing
+					}
+				);
+
+				// Animate the text
+				const textElement = article.querySelector('.slideshow_slideshow-articleText__4F5E0 div');
+				gsap.fromTo(
+					textElement,
+					{ y: 50, opacity: 0 }, // Start position and opacity
+					{
+						y: 0,         // End at original position
+						opacity: 1,   // Fully visible
+						duration: 1,  // 1 second duration
+						delay: 0.4,   // Delay the text animation a bit more
+						ease: 'power3.out', // Smooth easing
+					}
+				);
+
+				// Animate star rotation
+				const star = article.querySelector('.star');
+				gsap.fromTo(
+					star,
+					{ rotate: 0 },  // Start with no rotation
+					{
+						rotate: 360,   // 360-degree rotation
+						duration: 2,   // Duration of 2 seconds for a full rotation
+						ease: 'power4.out', // Smooth easing
+						repeat: -1,    // Infinite repeat for continuous rotation
+						transformOrigin: "50% 50%" // Keep the rotation centered on the star's own axis
+					}
+				);
+			}
+		});
+	}, [activeIndex]); // Run animation when activeIndex changes
+
+	// Handlers for navigation
+	const nextSlide = () => {
+		setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+	};
+
+	const prevSlide = () => {
+		setActiveIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
+	};
+
 	return (
 		<>
 			<section className="styles_clients__0Fl_N">
@@ -148,6 +248,7 @@ export default function Clients() {
 								className="styles_button__CR5vR styles_prev__2AqhC border-radius slideshow_slideshow-contentButton__pwYkf"
 								onMouseEnter={() => setIsPrevHovered(true)}
 								onMouseLeave={() => setIsPrevHovered(false)}
+								onClick={prevSlide}
 							>
 								<div
 									className="styles_button__svgContainer__ppZ1p border-radius"
@@ -278,6 +379,7 @@ export default function Clients() {
 							<button aria-label="next Slide" title className="styles_button__CR5vR styles_next__qm3f_ border-radius slideshow_slideshow-contentButton__pwYkf"
 								onMouseEnter={() => setIsNextHovered(true)}
 								onMouseLeave={() => setIsNextHovered(false)}
+								onClick={nextSlide}
 							>
 								<div
 									className="styles_button__svgContainer__ppZ1p border-radius"
@@ -335,8 +437,7 @@ export default function Clients() {
 								</div>
 							</button>
 						</header>
-						<div className="slideshow_slideshow-articles__sjzQn">
-							<article className="slideshow_slideshow-article__ztzrb slideshow_--selected__jJos1" style={{ opacity: 1 }}>
+						{/* <article className="slideshow_slideshow-article__ztzrb slideshow_--selected__jJos1" style={{ opacity: 1 }}>
 								<h4 className="slideshow_slideshow-articleTitle__OckzX title title-130">
 									<div style={{ transform: 'translate(0px, 0px)' }}>Meredith Watkins</div>
 								</h4>
@@ -465,7 +566,59 @@ export default function Clients() {
 										“When working with BetheBuzz, I never felt like a client. As my right-hand person, Miad has personally helped me outline my product development life cycle and prepare for investor presentations with a thorough go-to-market plan. Her ability to read between the lines of any business plan to determine the most cost-effective, efficient way to move forward is uncanny. I’ve never felt so empowered to take on the challenges of growing a new business than I have when working with Miad.”
 									</div>
 								</div>
-							</article>
+							</article> */}
+						<div className="slideshow_slideshow-articles__sjzQn">
+							{testimonials.map((testimonial, index) => (
+								<article
+									key={testimonial.id}
+									className={`slideshow_slideshow-article__ztzrb ${index === activeIndex ? "slideshow_--selected__jJos1" : ""
+										}`}
+									style={{ opacity: index === activeIndex ? 1 : 0 }}
+								>
+									<h4 className="slideshow_slideshow-articleTitle__OckzX title title-130">
+										<div style={{ transform: "translate(0px, 0px)" }}>
+											{testimonial.name}
+										</div>
+									</h4>
+									<div className="slideshow_slideshow-articleSubtitle__WTbzq text text-14">
+										<div style={{ transform: "translate(0px, 0px)" }}>
+											{testimonial.subtitle}
+										</div>
+									</div>
+									<svg
+										className="slideshow_slideshow-articleIcon__J6wJ_"
+										xmlns="http://www.w3.org/2000/svg"
+										width="57"
+										height="54"
+										viewBox="0 0 57 54"
+										fill="none"
+									>
+										<path
+											className="star"
+											d="M35.2288 18.1385C34.5527 22.5592 36.8333 25.3963 38.8747 26.8395M32.2666 38.0795C33.0199 36.9619 33.5644 35.7195 34.2644 34.5675C34.6244 33.9758 35.0515 33.3865 35.6734 33.0765C36.0312 32.8987 36.4314 32.824 36.8258 32.7559C38.296 32.5016 39.7856 32.3027 41.2047 31.8473C41.9255 31.6169 42.6356 31.3128 43.2086 30.8226C43.9128 30.2184 44.3179 29.2923 44.2158 28.3615C44.1137 27.4307 43.5207 26.6137 42.9191 25.8747C41.2936 23.8793 39.1316 22.1997 38.7369 19.5097C38.6176 18.695 38.7793 17.8711 38.8375 17.0514C38.9046 16.0879 38.8268 15.1196 38.748 14.1561C38.6971 13.5256 38.6556 12.7329 38.3249 12.1742C37.9567 11.5503 37.075 11.2331 36.3949 11.1695C35.5909 11.0937 34.788 11.2881 34.0206 11.5295C32.3716 12.0472 30.9424 12.9446 29.3539 13.5753C29.0564 13.693 28.7467 13.797 28.4254 13.7951C28.0997 13.7939 27.7839 13.6836 27.4768 13.5747C25.2752 12.7976 23.0078 11.7371 20.652 11.6314C20.0118 11.6024 19.3474 11.7271 18.8309 12.0972C18.3123 12.469 17.9862 13.0595 17.831 13.6763C17.6758 14.2931 17.6758 14.938 17.7091 15.5748C17.7937 17.182 18.0788 18.7725 18.3643 20.3592C18.431 20.7289 18.496 21.1136 18.3923 21.4732C18.3067 21.7686 18.1125 22.0194 17.9223 22.2616C16.8088 23.6842 15.6854 25.0995 14.5825 26.531C13.8051 27.5409 13.1897 28.9309 13.8794 30.1673C14.5065 31.2924 15.7699 31.739 16.942 32.0554C17.6157 32.2377 18.2911 32.4194 18.9754 32.5564C20.0214 32.7659 21.2411 32.7624 22.1459 33.397C22.4506 33.6105 22.6942 33.8969 22.9217 34.189C24.2647 35.9126 25.2667 37.8776 26.743 39.5027C27.5101 40.3474 28.5974 40.9265 29.702 40.4261C30.8066 39.9258 31.6206 39.0429 32.2704 38.08L32.2666 38.0795Z"
+											stroke="#5E29F9"
+											strokeWidth="1.5"
+											strokeMiterlimit="10"
+											strokeLinecap="round"
+											style={{ opacity: 1, transformOrigin: "0px 0px" }}
+										/>
+										<path
+											className="lines"
+											d="M50.2451 30.3207L55.8331 32.5057M31.2428 47.1617L32.2579 53.0752M7.08393 28.8568L1.17041 29.8719M15.4704 5.73513L11.547 1.19568M41.8082 6.23674L45.2712 1.33702"
+											stroke="#5E29F9"
+											strokeWidth="1.5"
+											strokeMiterlimit="10"
+											strokeLinecap="round"
+											style={{ opacity: 1, transformOrigin: "0px 0px" }}
+										/>
+									</svg>
+									<div className="slideshow_slideshow-articleText__4F5E0 text">
+										<div style={{ opacity: 1, transform: "translate(0px, 0px)" }}>
+											{testimonial.text}
+										</div>
+									</div>
+								</article>
+							))}
 						</div>
 					</div>
 					<div className="slideshow_slideshow-side__mHpmh">
